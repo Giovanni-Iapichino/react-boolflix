@@ -15,7 +15,7 @@ export default function SearchBar() {
     <form onSubmit={handleSearch} className="search-bar">
       <input
         type="text"
-        placeholder="Search for a movie..."
+        placeholder="Cerca un film..."
         value={searchTitle}
         onChange={(e) => setSearchTitle(e.target.value)}
       />
