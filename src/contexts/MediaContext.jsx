@@ -1,12 +1,12 @@
 import { createContext, useState } from "react";
 import axios from "axios";
 
-export const MovieContext = createContext();
+export const MediaContext = createContext();
 
-export default function MovieProvider({ children }) {
-  const [movies, setMovies] = useState([]);
+export default function MediaProvider({ children }) {
+  const [media, setMedia] = useState([]);
 
-  const searchMovies = (query) => {
+  const searchMedia = (query) => {
     if (!query) return;
 
     const apiKey = import.meta.env.VITE_API_KEY;
@@ -33,14 +33,14 @@ export default function MovieProvider({ children }) {
           vote_average: serie.vote_average,
           type: "series",
         }));
-        setMovies([...moviesData, ...seriesData]);
+        setMedia([...moviesData, ...seriesData]);
       });
     });
   };
 
   return (
-    <MovieContext.Provider value={{ movies, searchMovies }}>
+    <MediaContext.Provider value={{ media, searchMedia }}>
       {children}
-    </MovieContext.Provider>
+    </MediaContext.Provider>
   );
 }

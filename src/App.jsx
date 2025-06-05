@@ -1,16 +1,16 @@
 import Footer from "./components/LayoutComponents/Footer";
 import Main from "./components/LayoutComponents/Main";
 import Header from "./components/LayoutComponents/Header";
-import MovieProvider from "./contexts/MovieContext";
+import MediaProvider from "./contexts/MediaContext";
 
 export default function App() {
   return (
     <>
-      <MovieProvider>
+      <MediaProvider>
         <Header />
         <Main />
         <Footer />
-      </MovieProvider>
+      </MediaProvider>
     </>
   );
 }

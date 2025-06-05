@@ -1,13 +1,13 @@
-import { MovieContext } from "../../contexts/MovieContext";
+import { MediaContext } from "../../contexts/MediaContext";
 import { useContext, useState } from "react";
 
 export default function SearchBar() {
   const [searchTitle, setSearchTitle] = useState("");
-  const { searchMovies } = useContext(MovieContext);
+  const { searchMedia } = useContext(MediaContext);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    searchMovies(searchTitle);
+    searchMedia(searchTitle);
     setSearchTitle("");
   };
 
