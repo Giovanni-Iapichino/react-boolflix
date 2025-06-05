@@ -3,22 +3,38 @@ import { useContext } from "react";
 
 export default function Main() {
   const { movies } = useContext(MovieContext);
+
+  function getFlagsPath(original_language) {
+    const supportedLanguages = ["it", "en", "fr", "es", "de"];
+    return supportedLanguages.includes(original_language)
+      ? `/flags/${original_language}.png`
+      : "/flags/Unknown.png";
+  }
+
   return (
     <main>
       <div className="container">
         {movies.length > 0 ? (
           <ul>
-            {movies.map((movie) => (
-              <li key={movie.id}>
-                <p>Titolo: {movie.title}</p>
-                <p>Titolo Originale: {movie.original_title}</p>
-                <p>Lingua: {movie.original_language}</p>
-                <p>Voto: {movie.vote_average}</p>
+            {movies.map((item) => (
+              <li key={item.id}>
+                <p>Tipo: {item.type === "movie" ? "Film" : "Serie"}</p>
+                <p>Titolo: {item.title}</p>
+                <p>Titolo Originale: {item.original_title}</p>
+                <p>
+                  Lingua:
+                  <img
+                    src={getFlagsPath(item.original_language)}
+                    alt={item.original_language}
+                    style={{ width: "24px", height: "16px", marginLeft: "6px" }}
+                  />
+                </p>
+                <p>Voto: {item.vote_average}</p>
               </li>
             ))}
           </ul>
         ) : (
-          <p>Nessun film trovato. Fai una ricerca per iniziare.</p>
+          <p>Nessun film o serie trovata. Fai una ricerca per iniziare.</p>
         )}
       </div>
     </main>
