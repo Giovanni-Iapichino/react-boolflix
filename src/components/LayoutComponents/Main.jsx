@@ -10,10 +10,10 @@ export default function Main() {
           <ul>
             {movies.map((movie) => (
               <li key={movie.id}>
-                <p>{movie.title}</p>
-                <p>{movie.original_title}</p>
-                <p>{movie.original_language}</p>
-                <p>{movie.vote_average}</p>
+                <p>Titolo: {movie.title}</p>
+                <p>Titolo Originale: {movie.original_title}</p>
+                <p>Lingua: {movie.original_language}</p>
+                <p>Voto: {movie.vote_average}</p>
               </li>
             ))}
           </ul>
