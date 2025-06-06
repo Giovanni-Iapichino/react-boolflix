@@ -23,6 +23,7 @@ export default function MediaProvider({ children }) {
         original_language: movie.original_language,
         vote_average: movie.vote_average,
         poster: `https://image.tmdb.org/t/p/w342/${movie.poster_path}`,
+        overview: movie.overview,
         type: "movie",
       }));
       setMovies(moviesData);
@@ -36,6 +37,7 @@ export default function MediaProvider({ children }) {
         original_language: serie.original_language,
         vote_average: serie.vote_average,
         poster: `https://image.tmdb.org/t/p/w342/${serie.poster_path}`,
+        overview: serie.overview,
         type: "series",
       }));
       setSeries(seriesData);
