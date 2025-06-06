@@ -65,6 +65,11 @@ input {
   transition: opacity 0.3s ease;
   overflow-y: auto;
   font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .media-card:hover .card-overlay {

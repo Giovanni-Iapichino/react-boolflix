@@ -9,13 +9,23 @@ export default function Main() {
   return (
     <main className="container">
       {noResults ? (
-        <p className="text-center">
+        <h3 className="text-center mt-5">
           Nessun film o serie trovata. Fai una ricerca per iniziare.
-        </p>
+        </h3>
       ) : (
         <>
+          {movies.length > 0 ? (
+            <h2 className="mt-5 text-center">Sezione Film</h2>
+          ) : (
+            ""
+          )}
           <ResultSection items={movies} />
-          <hr />
+
+          {series.length > 0 ? (
+            <h2 className="mt-5 text-center">Sezione Serie TV</h2>
+          ) : (
+            ""
+          )}
           <ResultSection items={series} />
         </>
       )}
