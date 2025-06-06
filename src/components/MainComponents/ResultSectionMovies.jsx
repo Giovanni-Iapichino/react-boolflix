@@ -44,7 +44,12 @@ export default function ResultSection({ movies }) {
                 style={{ width: "24px", height: "16px", marginLeft: "6px" }}
               />
             </p>
-            <p>Voto: {renderStars(item.vote_average)}</p>
+            <p>
+              Voto: {renderStars(item.vote_average)} {""}
+              {item.vote_average === 10 || item.vote_average === 0
+                ? item.vote_average
+                : item.vote_average.toFixed(1)}
+            </p>
           </li>
         ))}
       </ul>
