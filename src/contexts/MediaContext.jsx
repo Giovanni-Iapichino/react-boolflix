@@ -4,7 +4,8 @@ import axios from "axios";
 export const MediaContext = createContext();
 
 export default function MediaProvider({ children }) {
-  const [media, setMedia] = useState([]);
+  const [movies, setMovies] = useState([]);
+  const [series, setSeries] = useState([]);
 
   const searchMedia = (query) => {
     if (!query) return;
@@ -23,23 +24,24 @@ export default function MediaProvider({ children }) {
         vote_average: movie.vote_average,
         type: "movie",
       }));
+      setMovies(moviesData);
+    });
 
-      axios.get(seriesUrl).then((seriesRes) => {
-        const seriesData = seriesRes.data.results.map((serie) => ({
-          id: serie.id,
-          title: serie.name,
-          original_title: serie.original_name,
-          original_language: serie.original_language,
-          vote_average: serie.vote_average,
-          type: "series",
-        }));
-        setMedia([...moviesData, ...seriesData]);
-      });
+    axios.get(seriesUrl).then((seriesRes) => {
+      const seriesData = seriesRes.data.results.map((serie) => ({
+        id: serie.id,
+        title: serie.name,
+        original_title: serie.original_name,
+        original_language: serie.original_language,
+        vote_average: serie.vote_average,
+        type: "series",
+      }));
+      setSeries(seriesData);
     });
   };
 
   return (
-    <MediaContext.Provider value={{ media, searchMedia }}>
+    <MediaContext.Provider value={{ movies, series, searchMedia }}>
       {children}
     </MediaContext.Provider>
   );

@@ -1,15 +1,23 @@
 import { MediaContext } from "../../contexts/MediaContext";
 import { useContext } from "react";
-import ResultSection from "../MainComponents/ResultSection";
+import ResultSectionMovies from "../MainComponents/ResultSectionMovies";
+import ResultSectionSeries from "../MainComponents/ResultSectionSeries";
 
 export default function Main() {
-  const { media } = useContext(MediaContext);
+  const { movies, series } = useContext(MediaContext);
+  const noResults = movies.length === 0 && series.length === 0;
 
   return (
-    <main>
-      <div className="container">
-        <ResultSection media={media} />
-      </div>
+    <main className="container">
+      {noResults ? (
+        <p>Nessun film o serie trovata. Fai una ricerca per iniziare.</p>
+      ) : (
+        <>
+          <ResultSectionMovies movies={movies} />
+          <hr />
+          <ResultSectionSeries series={series} />
+        </>
+      )}
     </main>
   );
 }
