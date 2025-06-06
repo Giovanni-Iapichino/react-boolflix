@@ -33,7 +33,6 @@ export default function MovieCards({ item }) {
       style={{ backgroundImage: `url(${item.poster})` }}
     >
       <div className="card-overlay">
-        <p>Tipo: Film</p>
         <p>Titolo: {item.title}</p>
         <p>Titolo Originale: {item.original_title}</p>
         <p className="d-flex align-items-center">
