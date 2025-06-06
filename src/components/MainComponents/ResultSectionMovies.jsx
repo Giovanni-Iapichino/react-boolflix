@@ -1,3 +1,9 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faStar as fullStar,
+  faStar as emptyStar,
+} from "@fortawesome/free-solid-svg-icons";
+
 export default function ResultSection({ movies }) {
   function getFlagsPath(original_language) {
     const supportedLanguages = ["it", "en", "fr", "es", "de"];
@@ -6,12 +12,28 @@ export default function ResultSection({ movies }) {
       : "/flags/Unknown.png";
   }
 
+  const renderStars = (vote_average) => {
+    const stars = Math.ceil(vote_average / 2);
+    return (
+      <>
+        {[1, 2, 3, 4, 5].map((i) => (
+          <FontAwesomeIcon
+            key={i}
+            icon={i <= stars ? fullStar : emptyStar}
+            style={{ color: i <= stars ? "#ffc107" : "#ccc" }}
+          />
+        ))}
+      </>
+    );
+  };
+
   return (
     <section className="result-section">
       <ul>
         {movies.map((item) => (
           <li key={item.id}>
             <p>Tipo: {item.type === "movie" ? "Film" : "Serie"}</p>
+            <img src={item.poster} alt={item.title} />
             <p>Titolo: {item.title}</p>
             <p>Titolo Originale: {item.original_title}</p>
             <p>
@@ -22,7 +44,7 @@ export default function ResultSection({ movies }) {
                 style={{ width: "24px", height: "16px", marginLeft: "6px" }}
               />
             </p>
-            <p>Voto: {item.vote_average}</p>
+            <p>Voto: {renderStars(item.vote_average)}</p>
           </li>
         ))}
       </ul>
