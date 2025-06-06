@@ -1,5 +1,7 @@
 import { MediaContext } from "../../contexts/MediaContext";
 import { useContext, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export default function SearchBar() {
   const [searchTitle, setSearchTitle] = useState("");
@@ -19,8 +21,9 @@ export default function SearchBar() {
         value={searchTitle}
         onChange={(e) => setSearchTitle(e.target.value)}
       />
+
       <button type="submit" className="search-button">
-        Cerca
+        <FontAwesomeIcon icon={faMagnifyingGlass} />
       </button>
     </form>
   );
